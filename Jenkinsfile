@@ -20,17 +20,12 @@ pipeline {
     stage('package') {
       steps {
         echo 'this is the package job'
-        sh 'mvn package'
+        sh 'mvn package -DskipTests'
         sleep 7
       }
     }
 
-    stage('archive') {
-      steps {
-        archiveArtifacts '**/target/*jar'
-      }
-    }
-
+  
   }
   tools {
     maven 'maven'
